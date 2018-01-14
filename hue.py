@@ -43,8 +43,8 @@ class MainHandler(tornado.web.RequestHandler):
             light.brightness = int(value)
 
         if host_ip != client_ip or not isinstance(function, str):
-            self.redirect("/login")
-        else:
+#            self.redirect("/login")
+#        else:
             self.write("""
             <!DOCTYPE html>
             <html lang="es-es">
