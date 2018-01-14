@@ -66,12 +66,6 @@ class MainHandler(tornado.web.RequestHandler):
             <body>
             """)
 
-            global V
-
-            V += 1
-
-            self.write('<p style="text-align: right">Hello. Page viewed %d times.</p>' % (V,))
-
             self.write("<table>")
 
             num = 0
