@@ -11,7 +11,7 @@ class MainHandler(tornado.web.RequestHandler):
         return self.get_secure_cookie("user")
 
     def get(self):
-        bridge = phue.Bridge(ip="192.168.1.56")
+        bridge = phue.Bridge(ip="10.135.1.167")
 
         bridge.connect()
 
