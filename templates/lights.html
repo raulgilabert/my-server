@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Light controller</title>
+
+        <link rel="stylesheet" href="{{ static_url('css/lights.css')}}">
+
+        <script type="text/javascript" src="{{ static_url('js/controller.js')}}"></script>
+    </head>
+    <body>
+
+        <table>
+            {% for group in groups %}
+                <tr>
+                    <td class="nameGroup"> {{group.name}} </td>
+
+                    {% if group.on %}
+                        <td><img src="{{ static_url('images/on.jpg')}}" id="{{ group.name }}" height="32" onclick="apagar(this.id)"></td>
+
+                    {% else %}
+                        <td><img src="{{ static_url('images/off.jpg')}}" id="{{ group.name }}" height="32" onclick="encender(this.id)"></td>
+                    {% end %}
+
+                    <td><button type="button" id="{{ group.name }}" onclick="encender(this.id)">On</button></td>
+
+                    <td><button type="button" id="{{ group.name }}" onclick="apagar(this.id)">Off</button></td>
+
+                    <td><input type="range" min="1" max="255" value="{{ group.brightness }}" class="slider" id="{{ group.name }}" oninput="update_label(this.value, this.id)" onchange="brightness(this.value, this.id)"></td>                
+                </tr>
+            {% end %}
+        </table>
+
+    </body>
+</html>
