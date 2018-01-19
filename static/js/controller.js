@@ -1,3 +1,7 @@
+/*if location.href != location.protocol + '//' + location.host + location.pathname {
+	location.href = location.protocol + '//' + location.host + location.pathname
+}
+*/
 function encender(id) {
 	location.href = location.href.split("?")[0] + "?light=" + id + "&function=Turn-on"
 };

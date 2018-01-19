@@ -1,14 +1,22 @@
 import tornado.web
 import tornado.escape
-import socket
 from urllib import parse
 
 import phue
 
 
 class MainHandler(tornado.web.RequestHandler):
-    def get_current_user(self):
-        return self.get_secure_cookie("user")
+    def redirect_to_main(self):
+        txt = ""
+
+        for character in self.request.uri:
+            if character != "?":
+                txt += character
+
+            else:
+                break
+
+        self.redirect(txt)
 
     def get(self):
         bridge = phue.Bridge(ip="10.135.1.167")
@@ -24,6 +32,9 @@ class MainHandler(tornado.web.RequestHandler):
         if isinstance(function, str):
             function = parse.unquote(function)
 
+        else:
+            self.render("lights.html", groups=bridge.groups)
+
         if isinstance(name, str):
             name = parse.unquote(name)
 
@@ -32,10 +43,14 @@ class MainHandler(tornado.web.RequestHandler):
         if function == "Turn-on":
             light.on = True
 
+            self.redirect_to_main()
+
         elif function == "Turn-off":
             light.on = False
+
+            self.redirect_to_main()
 
         elif function == "Brightness":
             light.brightness = int(value)
 
-        self.render("lights.html", groups=bridge.groups)
+            self.redirect_to_main()
