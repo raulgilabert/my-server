@@ -1,6 +1,7 @@
 import os
 
 import hue
+import web
 import tornado.ioloop
 import tornado.web
 
@@ -18,6 +19,7 @@ class Application(tornado.web.Application):
         }
 
         tornado.web.Application.__init__(self, [
+            tornado.web.url(r"/", web.MainWeb),
             tornado.web.url(r"/hue", hue.MainHandler),
             (r"/(off.jpg)", tornado.web.StaticFileHandler, {'path': 'static/images/'}),
             (r"/(on.jpg)", tornado.web.StaticFileHandler, {'path': 'static/images/'}),

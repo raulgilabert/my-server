@@ -79,13 +79,13 @@ class MainHandler(tornado.web.RequestHandler):
                     if group.on:
                         self.write('<td class="nameGroup">' + group.name + "</td>")
 
-                        self.write('<td><img src="on.jpg" id="' + group.name +
+                        self.write('<td><img src="../on.jpg" id="' + group.name +
                                    '" height="32" onclick="apagar(this.id)"></img></td>')
 
                     else:
                         self.write('<td class="nameGroup">' + group.name + "</td>")
 
-                        self.write('<td><img src="off.jpg" id="' + group.name +
+                        self.write('<td><img src="../off.jpg" id="' + group.name +
                                    '" height="32" onclick="encender(this.id)"></img></td>')
 
                     self.write('<td><button type="button" id="' + group.name +
