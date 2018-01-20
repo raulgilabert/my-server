@@ -6,6 +6,15 @@ import tornado.ioloop
 import tornado.web
 
 
+class NotFoundHandler(tornado.web.RequestHandler):
+    def prepare(self):  # for all methods
+#        raise tornado.web.HTTPError(
+#            status_code=404,
+#            reason="Invalid resource path."
+#        )
+        self.render("error.html")
+
+
 class Application(tornado.web.Application):
     def __init__(self):
         base_dir = os.path.dirname(__file__)
@@ -24,7 +33,7 @@ class Application(tornado.web.Application):
             (r"/(off.jpg)", tornado.web.StaticFileHandler, {'path': 'static/images/'}),
             (r"/(on.jpg)", tornado.web.StaticFileHandler, {'path': 'static/images/'}),
             (r"/(level_4.json)", tornado.web.StaticFileHandler, {'path': 'static/json/'}),
-        ], **settings)
+        ], default_handler_class=NotFoundHandler, **settings)
 
 
 if __name__ == "__main__":

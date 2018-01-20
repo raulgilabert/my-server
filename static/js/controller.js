@@ -1,7 +1,3 @@
-/*if location.href != location.protocol + '//' + location.host + location.pathname {
-	location.href = location.protocol + '//' + location.host + location.pathname
-}
-*/
 function encender(id) {
 	location.href = location.href.split("?")[0] + "?light=" + id + "&function=Turn-on"
 };
@@ -12,8 +8,4 @@ function apagar(id) {
 
 function brightness(value, id) {
 	location.href = location.href.split("?")[0] + "?light=" + id + "&value=" + value + "&function=Brightness"
-}
-
-function update(value, id) {
-
 }
