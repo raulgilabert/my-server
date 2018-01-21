@@ -4,9 +4,20 @@ a {
 }
 
 button {
-	height: 45px;
-	width: 145px;
+	height: 50px;
+	width: 200px;
     font-size: 15px;
+}
+
+label {
+    font-size: 20px;
+    display: block;
+    text-align: right;
+}
+
+input #input {
+	height: 15px;
+	width: 150px;
 }
 
 h1 {

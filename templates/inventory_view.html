@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Inventory</title>
+        <link rel="stylesheet" href="{{ static_url('css/web.css')}}">
+	</head>
+	<body>
+		<h1>Inventory</h1>
+
+		<ul>
+			{% for element in inventory %}
+				<li>{{ element["name"] }}</li>
+
+				<ul>
+					<li>{{ element["quantity"] }}</li>
+				</ul>
+
+			{% end %}
+		</ul>
+	</body>
+</html>

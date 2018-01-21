@@ -1,0 +1,33 @@
+{
+	"frutas":{
+		"manzana": 5
+	},
+	"latas": {
+		"atun": 10,
+		"maiz": 9,
+		"pimientos del piquillo": 3,
+		"olivas": 7,
+		"agave": 3
+	},
+	"pastas": {
+		
+	},
+	"galletas": {
+		
+	},
+	"legumbres": {
+		
+	},
+	"verduras": {
+		
+	},
+	"lacteos": {
+		
+	},
+	"carnes": {
+		
+	},
+	"otros": {
+		
+	}
+}

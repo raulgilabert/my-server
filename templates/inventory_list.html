@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Inventory</title>
+        <link rel="stylesheet" href="{{ static_url('css/web.css')}}">
+	</head>
+	<body>
+		<h1>Shopping list</h1>
+
+		{% for category in inventory %}
+
+			{% if list[category] != {} %}
+				<h2>{{ category }}</h2>
+			{% end %}
+
+			<ul>
+				{% for element in list[category] %}
+					<li> 
+						{{ element }} 
+
+						<ul>
+							<li> {{ list[category][element] }} </li>
+						</ul>
+					</li>
+				{% end %}
+			</ul>
+		{% end %}
+	</body>
+</html>

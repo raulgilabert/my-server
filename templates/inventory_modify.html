@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Inventory</title>
+        <link rel="stylesheet" href="{{ static_url('css/web.css')}}">
+	</head>
+	<body>
+		<form method="POST">
+			<datalist id="element">
+				{% for category in inventory %}
+					{% for element in inventory[category] %}
+						<option>{{ element }}</option>
+					{% end %}
+				{% end %}
+			</datalist>
+
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<label>Category</label>
+						</td>
+
+						<td>
+							<select name="element" type="datalist" id="input">
+								{% for category in inventory %}
+									<option>{{ category }}</option>
+								{% end %}
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label>Element *</label>
+						</td>
+
+						<td>
+							<input list="element" name="element" type="datalist" id="input" required>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<label>Quantity *</label>
+						</td>
+
+						<td>
+							<input type="number" name="quantity" id="input" required>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<p></p>
+						</td>
+
+						<td>
+							<input type="submit" name="submit" id="submit" required>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+			{% raw xsrf_form_html() %}
+		</form>
+	</body>
+</html>
