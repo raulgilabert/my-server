@@ -5,8 +5,11 @@ import tornado.web
 
 import hue
 import web
-import inventory
 
+import web_calendar as calendar
+import add_to_calendar as calendar_add
+
+import inventory
 import inventory_view
 import inventory_list
 import inventory_modify
@@ -29,11 +32,16 @@ class Application(tornado.web.Application):
 
         tornado.web.Application.__init__(self, [
             tornado.web.url(r"/", web.MainWeb),
+
             tornado.web.url(r"/hue", hue.MainHandler),
+
             tornado.web.url(r"/inventory", inventory.MainHandler),
             tornado.web.url(r"/inventory/view", inventory_view.MainHandler),
             tornado.web.url(r"/inventory/list", inventory_list.MainHandler),
             tornado.web.url(r"/inventory/modify", inventory_modify.MainHandler),
+
+            tornado.web.url(r"/calendar", calendar.MainHandler),
+            tornado.web.url(r"/calendar/add", calendar_add.MainHandler),
         ], default_handler_class=NotFoundHandler, **settings)
 
 

@@ -3,6 +3,58 @@ a {
     text-decoration: none;
 }
 
+/* display: inline-block; */
+
+#past {
+	float: left;
+	position: relative;
+	width: 13.1428571%;
+	height: 175px;
+	background-color: rgb(192, 192, 192);
+	margin: .5%;
+	vertical-align: middle;
+}
+
+#blank {
+	float: left;
+	position: relative;
+	width: 13.1428571%;
+	height: 175px;
+	background-color: rgb(255, 255, 255);
+	margin: .5%;
+	vertical-align: middle;
+}
+
+#now {
+	float: left;
+	position: relative;
+	width: 13.1428571%;
+	height: 175px;
+	background-color: rgb(128, 128, 128);
+	margin: .5%;
+	vertical-align: middle;
+}
+
+#future {
+	float: left;
+	position: relative;
+	width: 13.1428571%;
+	height: 175px;
+	background-color: rgb(192, 192, 192);
+	margin: .5%;
+	vertical-align: middle;
+}
+
+#event {
+	background-color: rgb(0, 255, 0);
+}
+
+p {
+	margin: none;
+	padding: none;
+	font-size: 100%;
+}
+
 button {
 	height: 50px;
 	width: 200px;
@@ -17,7 +69,7 @@ label {
 
 input #input {
 	height: 15px;
-	width: 150px;
+	width: 175px;
 }
 
 h1 {

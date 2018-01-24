@@ -1,0 +1,24 @@
+{
+    "2018": {
+        "1": {
+            "25": [
+                {
+                    "duration": {
+                        "final": "17:00",
+                        "init": "16:00"
+                    },
+                    "name": "Deberes de sociales"
+                }
+            ],
+            "31": [
+                {
+                    "duration": {
+                        "final": "13:00",
+                        "init": "10:30"
+                    },
+                    "name": "Excursion al teatro"
+                }
+            ]
+        }
+    }
+}
