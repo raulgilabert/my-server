@@ -19,6 +19,17 @@
                     "name": "Excursion al teatro"
                 }
             ]
+        },
+        "2": {
+            "1": [
+                {
+                    "duration": {
+                        "final": "14:00",
+                        "init": "12:30"
+                    },
+                    "name": "Event"
+                }
+            ]
         }
     }
 }

@@ -49,10 +49,23 @@ a {
 	background-color: rgb(0, 255, 0);
 }
 
+#button_1 {
+	position: absolute;
+	top: 16px;
+	left: 20px;
+	transform: rotate(180deg);
+}
+
+#button_2 {
+	position: absolute;
+	top: 16px;
+	right: 20px;
+}
+
 p {
 	margin: none;
 	padding: none;
-	font-size: 100%;
+	font-size: 75%;
 }
 
 button {
@@ -75,3 +88,7 @@ input #input {
 h1 {
 	margin: 0px;
 	padding: 0px;
+	width: 75%;
+	position: relative;
+	left: 12.5%
+}
