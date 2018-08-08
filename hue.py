@@ -19,7 +19,7 @@ class MainHandler(tornado.web.RequestHandler):
         self.redirect(txt)
 
     def get(self):
-        bridge = phue.Bridge(ip="10.135.1.167")
+        bridge = phue.Bridge(ip="10.74.1.167")
 
         bridge.connect()
 
