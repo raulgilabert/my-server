@@ -4,17 +4,70 @@ import socket
 import urllib.parse as parse
 
 import json
+import datetime
 
 class MainHandler(tornado.web.RequestHandler):
+    def redirect_to_main(self):
+        txt = ""
+
+        for character in self.request.uri:
+            if character != "?":
+                txt += character
+
+            else:
+                break
+
+        self.redirect(txt)
+
     def get(self):
-        try:
-            arguments = json.dumps({ k: self.get_argument(k) for k in self.request.arguments })
-            print("ok")
+        args = self.request.arguments
 
-#            json.dump(open("done.json", "w"), arguments)
+        date = datetime.datetime.now()
 
-        except:
-            arguments = json.load(open("done.json"))
+        if len(str(date.day)) == 1:
+            day = "0" + str(date.day)
 
+        else:
+            day = date.day
 
-        self.render("to_do.html", list=json.load(open("to_do.json","r")), done=arguments)
+        if len(str(date.month)) == 1:
+            month = "0" + str(date.month)
+
+        else:
+            month = date.month
+
+        today = str(day) + "/" + str(month) + "/" + str(date.year)
+
+        print(today)
+
+        day = open("day.txt", "r")
+
+        if day.readline() != today:
+            file = open("day.txt", "w")
+            file.write(today)
+            file.close()
+
+            data = json.load(open("to_do.json", "r"))
+
+            for dat in data:
+                data[dat] = 0
+
+            json.dump(data, open("to_do.json", "w"), indent=4, sort_keys=True)
+
+        data = json.load(open("to_do.json", "r"))
+
+        for arg in args:
+            value = args[arg][0].decode("utf-8")
+
+            print(value)
+
+            if value == "on":
+                data[arg] = 1
+
+            json.dump(data, open("to_do.json", "w"), indent=4, sort_keys=True)
+
+        if args != {}:
+            self.redirect_to_main()
+
+        else:
+            self.render("to_do.html", list=json.load(open("to_do.json","r")))

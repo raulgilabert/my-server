@@ -3,13 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <script type="text/javascript" src="{{ static_url('js/to_do.js')}}"></script>
-        <title>To-Do</title>
+        <title>Para hacer</title>
     </head>
     <body>
+        <a href="to-do/add"><button>Añadir tarea</button></a>
+
+        <br>
+        <br>
+        <br>
+
         <form action="">
         {% for element in list %}
-            <input type="checkbox" name="{{ element }}" id="{{ element }}" onclick="checked(this)"> {{ element }}
+            {% if list[element] == 0 %}
+                <input type="checkbox" name="{{ element }}" id="{{ element }}" onclick="checked(this)"> {{ element }}
+            {% end %}
+
+            {% if list[element] == 1 %}
+                <input type="checkbox" name="{{ element }}" id="{{ element }}" onclick="checked(this)" checked> {{ element }}
+            {% end %}
+
+            <br>
         {% end %}
+
+            <br>
 
             <input type="submit">
         </form>
