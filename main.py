@@ -6,6 +6,9 @@ import tornado.web
 import hue
 import web
 
+import to_do
+import to_do_add
+
 import web_calendar as calendar
 import add_to_calendar as calendar_add
 
@@ -42,6 +45,9 @@ class Application(tornado.web.Application):
 
             tornado.web.url(r"/calendar", calendar.MainHandler),
             tornado.web.url(r"/calendar/add", calendar_add.MainHandler),
+
+            tornado.web.url(r"/to-do", to_do.MainHandler),
+            tornado.web.url(r"/to-do/add", to_do_add.MainHandler),
         ], default_handler_class=NotFoundHandler, **settings)
 
 
