@@ -32,7 +32,7 @@ class MainHandler(tornado.web.RequestHandler):
 
                 json.dump(data, open("to_do.json", "w"), indent=4, sort_keys=True)
 
-            self.redirect_to_main()
+#            self.redirect_to_main()
 
         except tornado.web.MissingArgumentError:
             self.render("add_to_do.html")

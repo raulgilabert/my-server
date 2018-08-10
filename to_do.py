@@ -1,3 +1,5 @@
+# -*- coding utf-8 -*-
+
 import tornado.web
 import tornado.escape
 import socket
@@ -57,9 +59,18 @@ class MainHandler(tornado.web.RequestHandler):
         data = json.load(open("to_do.json", "r"))
 
         for arg in args:
+            print(arg.encode("ISO-8859-1"))
+
             value = args[arg][0].decode("utf-8")
 
             print(value)
+
+            arg = parse.unquote(arg)
+
+            pos = arg.find("Ã±")
+
+            if pos != -1:
+                arg = arg[:pos] + "ñ" + arg[pos+2:]
 
             if value == "on":
                 data[arg] = 1
