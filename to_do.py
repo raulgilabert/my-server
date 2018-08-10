@@ -70,4 +70,15 @@ class MainHandler(tornado.web.RequestHandler):
             self.redirect_to_main()
 
         else:
-            self.render("to_do.html", list=json.load(open("to_do.json","r")))
+            data = json.load(open("to_do.json", "r"))
+
+            done = []
+            to_do = []
+
+            for element in data:
+                if data[element] == 0:
+                    to_do.append(element)
+                else:
+                    done.append(element)
+
+            self.render("to_do.html", done=done, to_do=to_do)

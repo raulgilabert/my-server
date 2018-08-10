@@ -92,3 +92,24 @@ h1 {
 	position: relative;
 	left: 12.5%
 }
+
+table {
+    border-collapse: collapse;
+}
+
+tr {
+	border: none;
+}
+
+td {
+	padding: 5px
+}
+
+.yes {
+    border-left: 1px solid #000;
+}
+
+.title {
+    border-bottom: 1px solid #000;
+    text-align: center;
+}

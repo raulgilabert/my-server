@@ -23,7 +23,7 @@ class MainHandler(tornado.web.RequestHandler):
             task = self.get_argument("task")
 
             if isinstance(task, str):
-                function = parse.unquote(task)
+                task = parse.unquote(task)
 
             if task != "":
                 data = json.load(open("to_do.json", "r"))

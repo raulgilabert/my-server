@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <script type="text/javascript" src="{{ static_url('js/to_do.js')}}"></script>
+        <link rel="stylesheet" href="{{ static_url('css/web.css')}}">
         <title>Para hacer</title>
     </head>
     <body>
@@ -13,18 +14,34 @@
         <br>
 
         <form action="">
-        {% for element in list %}
-            {% if list[element] == 0 %}
-                <input type="checkbox" name="{{ element }}" id="{{ element }}" onclick="checked(this)"> {{ element }}
-            {% end %}
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="title">
+                            <b>Para hacer</b>
+                        </td>
 
-            {% if list[element] == 1 %}
-                <input type="checkbox" name="{{ element }}" id="{{ element }}" onclick="checked(this)" checked> {{ element }}
-            {% end %}
+                        <td class="title yes">
+                            <b>Hecho</b>
+                        </td>
+                    </tr>
 
-            <br>
-        {% end %}
+                    <tr>
+                        <td class="no">
+                            {% for element in to_do %}
+                                <input type="checkbox" name="{{ element }}" id="{{ element }}" onclick="checked(this)"> {{ element }}
+                                <br>
+                            {% end %}
+                        </td>
 
+                        <td class="yes">
+                            {% for element in done %}
+                                <input type="checkbox" name="{{ element }}" id="{{ element }}" onclick="checked(this)" checked> {{ element }}
+                            {% end %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <br>
 
             <input type="submit">
