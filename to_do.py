@@ -7,6 +7,8 @@ import urllib.parse as parse
 
 import json
 import datetime
+import pprint
+
 
 class MainHandler(tornado.web.RequestHandler):
     def redirect_to_main(self):
@@ -42,17 +44,37 @@ class MainHandler(tornado.web.RequestHandler):
 
         print(today)
 
+        now_day = int(day)
+
+        month = int(month)
+
         day = open("day.txt", "r")
 
-        if day.readline() != today:
+        dat = day.readline()
+
+        print(dat)
+
+        day = dat
+
+        if day != today:
+            print(day)
+
+            print("day: ", day[6:], day[3:5], day[:2])
+
+            print(datetime.date(date.year, month, now_day) - datetime.date(int(day[6:]), int(day[3:5]), int(day[:2])))
+
             file = open("day.txt", "w")
             file.write(today)
             file.close()
 
             data = json.load(open("to_do.json", "r"))
 
+            days = datetime.date(date.year, month, now_day) - datetime.date(int(day[6:]), int(day[3:5]), int(day[:2]))
+
             for dat in data:
-                data[dat] = 0
+                print(days.days)
+
+                data[dat] = [0, data[dat][1] + days.days]
 
             json.dump(data, open("to_do.json", "w"), indent=4, sort_keys=True)
 
@@ -73,7 +95,7 @@ class MainHandler(tornado.web.RequestHandler):
                 arg = arg[:pos] + "ñ" + arg[pos+2:]
 
             if value == "on":
-                data[arg] = 1
+                data[arg] = [1,0]
 
             json.dump(data, open("to_do.json", "w"), indent=4, sort_keys=True)
 
@@ -84,11 +106,13 @@ class MainHandler(tornado.web.RequestHandler):
             data = json.load(open("to_do.json", "r"))
 
             done = []
-            to_do = []
+            to_do = {}
 
             for element in data:
-                if data[element] == 0:
-                    to_do.append(element)
+                print(element)
+
+                if data[element][0] == 0:
+                    to_do[element] = data[element][1] - 1
                 else:
                     done.append(element)
 

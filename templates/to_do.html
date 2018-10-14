@@ -30,6 +30,7 @@
                         <td class="no">
                             {% for element in to_do %}
                                 <input type="checkbox" name="{{ element }}" id="{{ element }}" onclick="checked(this)"> {{ element }}
+                            ({{ to_do[element] }})
                                 <br>
                             {% end %}
                         </td>
